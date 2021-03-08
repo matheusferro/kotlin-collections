@@ -3,7 +3,7 @@ import java.text.CollationElementIterator
 fun main(args: Array<String>) {
 
     //Criando um Map
-    var pedidos: Map<Int, Double> = mapOf<Int, Double>(Pair(1, 20.0), Pair(2, 45.0), 3 to 50.0)
+    var pedidos: MutableMap<Int, Double> = mutableMapOf<Int, Double>(Pair(1, 20.0), Pair(2, 45.0), 3 to 50.0)
     println(pedidos)
 
     //Leitura
@@ -12,8 +12,23 @@ fun main(args: Array<String>) {
         print("Pedido $it")
     }
 
-    for (pedido: Map.Entry<Int, Double> in pedidos){
-        println("Número do pedido: ${pedido.key}")
-        println("Valor do pedido: ${pedido.value}")
+    for (p: Map.Entry<Int, Double> in pedidos){
+        println("Número do pedido: ${p.key}")
+        println("Valor do pedido: ${p.value}")
     }
+
+    //Inserindo elemento
+    pedidos[4] = 74.2
+    println(pedidos)
+    pedidos.put(5, 100.3)
+    println(pedidos)
+    //Alterando
+    pedidos.put(5, 300.3)
+    //Adicionando se não for repetido
+    pedidos.putIfAbsent(5, 300.3)
+    println(pedidos)
+    //Removendo, só por chave e por chave-valor
+    pedidos.remove(5)
+    pedidos.remove(4, 50.0)
+    println(pedidos)
 }
