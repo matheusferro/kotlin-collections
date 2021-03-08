@@ -1,12 +1,12 @@
+import java.text.CollationElementIterator
+
 fun main(args: Array<String>) {
     val banco = BancoDeNomes()
     banco.salva("Thais")
     /**
-     * Somente com o recurso utilizado não
-     * evita de nossa lista ser alterada.
+     * Só possivel utilizar Collection
      */
-    val listaMutavelCopia: MutableList<String> = banco.nomes as MutableList<String>
-    listaMutavelCopia.add("Hack3r")
+    val listaMutavelCopia: Collection<String> = banco.nomes
     println(listaMutavelCopia)
     println(banco.nomes)
 }
@@ -16,8 +16,11 @@ class BancoDeNomes{
     /**
      * Externaliza uma variavel "copia"
      * do objeto que nos manipulamos internamente.
+     *
+     * Adicionando o .toList() retorna uma cópia da lista interna
+     * impossibilitando o casting.
      */
-    val nomes: Collection<String> get() = dadosInterno
+    val nomes: Collection<String> get() = dadosInterno.toList()
 
     fun salva(nome: String){
         dadosInterno.add(nome)
