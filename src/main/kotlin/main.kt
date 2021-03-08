@@ -1,6 +1,13 @@
 fun main(args: Array<String>) {
     val banco = BancoDeNomes()
     banco.salva("Thais")
+    /**
+     * Somente com o recurso utilizado não
+     * evita de nossa lista ser alterada.
+     */
+    val listaMutavelCopia: MutableList<String> = banco.nomes as MutableList<String>
+    listaMutavelCopia.add("Hack3r")
+    println(listaMutavelCopia)
     println(banco.nomes)
 }
 
