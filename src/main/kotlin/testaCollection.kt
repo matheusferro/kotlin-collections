@@ -30,7 +30,7 @@ class BancoDeNomes{
 }
 
 fun testaColecao() {
-    val listaImutavel: Collection<String> = mutableListOf(
+    val listaImutavel: Collection<String> = listOf(
         "Alex",
         "Fran",
         "Gui",
